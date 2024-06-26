@@ -1,24 +1,16 @@
-import express from "express";
+import webserver from "./webserver.js";
+import OutageLabClient from "@outagelab/sdk";
 
-const port = process.env.PORT || 4000;
-
-const app = express();
-
-app.get("/api/recommendations", async (_req, res) => {
-  const response = await fetch("http://localhost:4000/api/v1/recommendations").then(x => x.json())
-  response.bla = 2
-  res.json(response);
+new OutageLabClient({
+  application: "nile-web-backend",
+  environment: process.env.ENVIRONMENT_NAME,
+  apiKey: process.env.OUTAGELAB_API_KEY,
+  enabled: (ctx) => ctx.environment !== "production",
 });
 
-app.get("/api/v1/recommendations", (_req, res) => {
-  res.json({ message: "Hello, world!" });
-});
+webserver.start();
 
-
-app.get("/*", async (_req, res) => {
-  res.render("index.html", dist);
-});
-
-app.listen(port, () => {
-  console.log("Server listening on port", port);
-});
+if (!process.env.OUTAGELAB_API_KEY) {
+  console.error("OUTAGELAB_API_KEY env var is required");
+  process.exit();
+}

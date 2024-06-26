@@ -1,0 +1,20 @@
+services:
+  demo:
+    build: .
+    ports:
+      - 4000:80
+    extra_hosts:
+      recommendations-service: 127.0.0.1
+      order-history-service: 127.0.0.1
+      product-details-service: 127.0.0.1
+      product-search-service: 127.0.0.1
+      shopping-cart-service: 127.0.0.1
+    environment:
+      - PORT=80
+      - RECOMMENDATIONS_HOST=http://recommendations-service
+      - ORDER_HISTORY_HOST=http://order-history-service
+      - PRODUCT_DETAILS_HOST=http://product-details-service
+      - PRODUCT_SEARCH_HOST=http://product-search-service
+      - SHOPPING_CART_HOST=http://shopping-cart-service
+      - ENVIRONMENT_NAME=local
+      - OUTAGELAB_API_KEY=${OUTAGELAB_API_KEY}

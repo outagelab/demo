@@ -1,5 +1,5 @@
 {
-  "name": "vue-express-webapp",
+  "name": "nile-web-demo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,10 +9,13 @@
     "dev:backend": "nodemon server/index.js",
     "dev": "concurrently 'npm:dev:frontend' 'npm:dev:backend'",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server/index.js"
   },
   "dependencies": {
+    "@outagelab/sdk": "^0.1.1",
     "express": "^4.19.2",
+    "express-http-proxy": "^2.0.0",
     "vue": "^3.4.29"
   },
   "devDependencies": {
