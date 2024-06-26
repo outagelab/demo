@@ -7,17 +7,24 @@ const props = defineProps({
 })
 
 const result = ref(null);
+const isOk = ref(true);
 
-fetch(props.path).then(x => result.value = x);
+fetch(props.path).then(x => {
+  result.value = x;
+});
 
 </script>
 
 <template>
- <div>
+ <div :class="result?.status < 400 ? 'ok' : 'broken'" v-if="result">
   {{ name }} status: {{ result?.status }}
  </div>
 </template>
 
 <style scoped>
+
+.broken {
+  background-color: rgb(240, 131, 131);
+}
 
 </style>
