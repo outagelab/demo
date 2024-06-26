@@ -3,11 +3,11 @@ import ServiceStatus from './components/ServiceStatus.vue'
 </script>
 
 <template>
-  <ServiceStatus name="product-search" path="/webapi/product-search" />
-  <ServiceStatus name="recommendations" path="/webapi/recommendations" />
-  <ServiceStatus name="product-details" path="/webapi/product-details" />
-  <ServiceStatus name="order-history" path="/webapi/orders" />
-  <ServiceStatus name="shopping-cart" path="/webapi/shopping-cart" />
+  <ServiceStatus name="product-search-service" path="/webapi/product-search" />
+  <ServiceStatus name="recommendations-service" path="/webapi/recommendations" />
+  <ServiceStatus name="product-details-service" path="/webapi/product-details" />
+  <ServiceStatus name="order-history-service" path="/webapi/orders" />
+  <ServiceStatus name="shopping-cart-service" path="/webapi/shopping-cart" />
 </template>
 
 <style scoped>
